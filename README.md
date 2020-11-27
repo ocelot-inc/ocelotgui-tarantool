@@ -1297,6 +1297,12 @@ INSERT INTO test VALUES (f());
 SELECT s1, s1 * f() FROM test;
 </pre>
 
+<P>Stored Procedures:<br>
+See the blog post
+<a href="http://ocelot.ca/blog/blog/2020/01/12/convert-sql-stored-procedures-to-lua-functions">
+Convert SQL Stored Procedures to Lua Functions</a>.
+</P>
+
 <P>
 Rules concerning ocelotgui when connecting to tarantool:<br>
 * All statements must end with ; (or something established by DELIMITER statement).
