@@ -526,7 +526,7 @@ is started again. Alternatively, settings can be placed in
 an options file such as my.cnf.</P>
 
 <P>
-<A href="special-settings.png"><img src="conditional.png" alt="special-settings.png" align="right" height="220" width="404"></A>
+<A href="A href="https://github.com/ocelot-inc/ocelotgui/blob/master/conditional.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/conditional.png" alt="conditional.png" align="right" height="220" width="404"></A>
 RE: CONDITIONAL SETTINGS. To override the ordinary <A HREF="#special-settings">settings</A>
 for result set displays there is a special SET statement with a WHERE clause:<br>
 SET ocelot_grid_setting = string|integer [, ocelot_grid_value = string-or-integer...]<br>
