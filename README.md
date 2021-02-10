@@ -1,7 +1,7 @@
 
 Ocelot ocelotgui A GUI for Tarantool
 
-<P>Version 1.2.0</P>
+<P>Version 1.3.0</P>
 
 <P>The Ocelot GUI (ocelotgui), a database client, allows users to connect to
 a Tarantool (tm) server, enter SQL statements, and receive results.
@@ -9,7 +9,7 @@ Some of its features are: syntax highlighting, user-settable colors
 and fonts for each part of the screen, result-set displays
 with multi-line rows and resizable columns.</P>
 
-<P>Copyright (c) 2014-2020, Ocelot Computer Services Inc.
+<P>Copyright (c) 2014-2021, Ocelot Computer Services Inc.
 All rights reserved.</P>
 
 <P>For the GPL license terms see <A href="https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL">https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL</A>.</P>
@@ -84,21 +84,21 @@ If one of the following ocelotgui binary packages is compatible with your platfo
 cut and paste the corresponding pair of instructions onto your computer and
 you can be up and running in about 15 seconds.<BR><BR>
 For 32-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.2.0/ocelotgui_1.2.0-1_i386.deb
-sudo apt install ./ocelotgui_1.2.0-1_i386.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.3.0/ocelotgui_1.3.0-1_i386.deb
+sudo apt install ./ocelotgui_1.3.0-1_i386.deb</PRE>
 For 64-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.2.0/ocelotgui_1.2.0-1_amd64.deb
-sudo apt install ./ocelotgui_1.2.0-1_amd64.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.3.0/ocelotgui_1.3.0-1_amd64.deb
+sudo apt install ./ocelotgui_1.3.0-1_amd64.deb</PRE>
 For 64-bit, RPM-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.2.0/ocelotgui-1.2.0-1.x86_64.rpm
-sudo rpm -i ocelotgui-1.2.0-1.x86_64.rpm</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.3.0/ocelotgui-1.3.0-1.x86_64.rpm
+sudo rpm -i ocelotgui-1.3.0-1.x86_64.rpm</PRE>
 For 64-bit, any Linux, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.2.0/ocelotgui-1.2.0.tar.gz
-tar zxvf ocelotgui-1.2.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.3.0/ocelotgui-1.3.0.tar.gz
+tar zxvf ocelotgui-1.3.0.tar.gz
 ocelotgui/ocelotgui-qt5</PRE>
 For 64-bit, any Linux, Qt4 (deprecated)<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.2.0/ocelotgui-1.2.0.tar.gz
-tar zxvf ocelotgui-1.2.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.3.0/ocelotgui-1.3.0.tar.gz
+tar zxvf ocelotgui-1.3.0.tar.gz
 ocelotgui/ocelotgui-qt4</PRE>
 </P>
 
@@ -132,9 +132,9 @@ Stop again with File|Exit or control-Q.
 
 <H2 ID="user-manual">User Manual</H2><HR><HR>
 
-<P>Version 1.2.0, October 29 2020</P>
+<P>Version 1.3.0, February 9 2021</P>
 
-<P>Copyright (c) 2014-2020 by Ocelot Computer Services Inc. All rights reserved.</P>
+<P>Copyright (c) 2014-2021 by Ocelot Computer Services Inc. All rights reserved.</P>
   
 <P>This program is free software; you can redistribute it and/or modify  
 it under the terms of the GNU General Public License as published by  
@@ -524,6 +524,21 @@ changed, and paste them into a file. Later this file can be
 executed (for example with SOURCE file-name), whenever ocelotgui
 is started again. Alternatively, settings can be placed in
 an options file such as my.cnf.</P>
+
+<P>
+<A href="special-settings.png"><img src="conditional.png" alt="special-settings.png" align="right" height="220" width="404"></A>
+RE: CONDITIONAL SETTINGS. To override the ordinary <A HREF="#special-settings">settings</A>
+for result set displays there is a special SET statement with a WHERE clause:<br>
+SET ocelot_grid_setting = string|integer [, ocelot_grid_value = string-or-integer...]<br>
+WHERE condition [AND|OR condition ...];<br>
+where ocelot_grid_setting is OCELOT_GRID_BACKGROUND_COLOR | OCELOT_GRID_FONT_STYLE |  etc.,<br>
+and condition has the form item comparison-operator literal, where
+item is COLUMN_NAME | COLUMN_NUMBER | COLUMN_TYPE | ROW_NUMBER | VALUE,<br>
+and comparison-operator is = | > | >= | < | <= | <> | IS | REGEXP.<br>
+For example to say "I want the background color to be pink if
+it's in the fourth column of the result set and it's NULL", say<br>
+SET ocelot_grid_background_color='pink' WHERE column_number = 4 AND value IS NULL;".</P>
+
 
 <P>RE: CONNECTION DIALOG. As stated earlier, if a password is necessary
 to connect, it is sufficient to start ocelotgui with "--password=<i>password</i>"
@@ -1168,7 +1183,7 @@ On Windows you do not need to install a
 Tarantool library, its code is embedded in ocelotgui.exe.</P>
 
 <P>You need the latest ocelotgui client.
-The Release 1.2.0 version is okay at the time of release,
+The Release 1.3.0 version is okay at the time of release,
 but some things might not be up to date.
 It may be better to build it from source.
 Download from github.com/ocelot-inc/ocelotgui.</P>
@@ -1343,11 +1358,11 @@ How to get it:<br>
 * Download the ocelotgui zip file from github.
   Check https://github.com/ocelot-inc/ocelotgui/blob/master/README.md
   to see where the latest release is. For example it might be
-  https://github.com/ocelot-inc/ocelotgui/releases/download/1.2.0/ocelotgui-1.2.0-1.ocelotgui.zip<br>
+  https://github.com/ocelot-inc/ocelotgui/releases/download/1.3.0/ocelotgui-1.3.0-1.ocelotgui.zip<br>
 * Unzip. It was zipped with 7-zip from http://www.7-zip.org,
   but other utilities should work. For example, on Windows command prompt,
   if you have the PowerShell utility on your path:
-  PowerShell Expand-Archive ocelotgui-1.2.0-1.ocelotgui.zip c:\ocelotgui<br>
+  PowerShell Expand-Archive ocelotgui-1.3.0-1.ocelotgui.zip c:\ocelotgui<br>
 * Read the COPYING and LICENSE arrangements.
   On Windows ocelotgui is statically linked to Qt and MariaDB libraries,
   so the copyright and licensing is not the same as for Linux.<br>
