@@ -1309,14 +1309,10 @@ box.space.timages:insert{3, load_file('/usr/share/doc/ocelotgui/shot3.png'), 'sh
 SET ocelot_extra_rule_1_display_as = 'image';
 SET ocelot_extra_rule_1_condition = 'data_type LIKE ''%BLOB''';
 SELECT * FROM "timages";
+</pre>
 
 Alternative: (details are left to the reader's imagination) We could instead use:
-function f() return 5 end;
-box.internal.sql_create_function("f",f,0);
-CREATE TABLE test (s1 INT PRIMARY KEY);
-INSERT INTO test VALUES (f());
-SELECT s1, s1 * f() FROM test;
-</pre>
+> <a href="https://www.tarantool.io/en/doc/latest/reference/reference_sql/sql_plus_lua/#calling-lua-routines-from-sql">a Lua function</a>.
 
 <P>Stored Procedures:<br>
 See the blog post
