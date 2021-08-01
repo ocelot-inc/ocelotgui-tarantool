@@ -10,7 +10,7 @@ and fonts for each part of the screen, result-set displays
 with multi-line rows and resizable columns.</P>
 
 <P>Copyright (c) 2021 by Peter Gulutzan
-All rights reserved.</P>
+All rights reserved.  </P>
 
 <P>For the GPL license terms see <A href="https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL">https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL</A>.</P>
 
