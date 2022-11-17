@@ -1,7 +1,7 @@
 
 ocelotgui A GUI for Tarantool
 
-<P>Version 1.5.0</P>
+<P>Version 1.8.0</P>
 
 <P>The ocelotgui GUI, a database client, allows users to connect to
 a Tarantool (tm) server, enter SQL statements, and receive results.
@@ -9,7 +9,7 @@ Some of its features are: syntax highlighting, user-settable colors
 and fonts for each part of the screen, result-set displays
 with multi-line rows and resizable columns.</P>
 
-<P>Copyright (c) 2021 by Peter Gulutzan
+<P>Copyright (c) 2022 by Peter Gulutzan
 All rights reserved.</P>
 
 <P>For the GPL license terms see <A href="https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL">https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL</A>.</P>
@@ -38,6 +38,7 @@ All rights reserved.</P>
 ... <A href="#result-widget">Result widget</A>
 ... <A href="#menu">Menu</A>
 ... <A href="#special-effects">Special effects</A>
+... <A href="#explorer-widget">Explorer widget</A>
 ... <A href="#contact">Contact</A>
 <H4>Appendixes</H4>
 ... <A href="#Appendix-1">Appendix 1 Details about ocelotgui options</A>
@@ -84,21 +85,21 @@ If one of the following ocelotgui binary packages is compatible with your platfo
 cut and paste the corresponding pair of instructions onto your computer and
 you can be up and running in about 15 seconds.<BR><BR>
 For 32-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.5.0/ocelotgui_1.5.0-1_i386.deb
-sudo apt install ./ocelotgui_1.5.0-1_i386.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui_1.8.0-1_i386.deb
+sudo apt install ./ocelotgui_1.8.0-1_i386.deb</PRE>
 For 64-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.5.0/ocelotgui_1.5.0-1_amd64.deb
-sudo apt install ./ocelotgui_1.5.0-1_amd64.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui_1.8.0-1_amd64.deb
+sudo apt install ./ocelotgui_1.8.0-1_amd64.deb</PRE>
 For 64-bit, RPM-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.5.0/ocelotgui-1.5.0-1.x86_64.rpm
-sudo rpm -i ocelotgui-1.5.0-1.x86_64.rpm</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0-1.x86_64.rpm
+sudo rpm -i ocelotgui-1.8.0-1.x86_64.rpm</PRE>
 For 64-bit, any Linux, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.5.0/ocelotgui-1.5.0.tar.gz
-tar zxvf ocelotgui-1.5.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0.tar.gz
+tar zxvf ocelotgui-1.8.0.tar.gz
 ocelotgui/ocelotgui-qt5</PRE>
 For 64-bit, any Linux, Qt4 (deprecated)<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.5.0/ocelotgui-1.5.0.tar.gz
-tar zxvf ocelotgui-1.5.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0.tar.gz
+tar zxvf ocelotgui-1.8.0.tar.gz
 ocelotgui/ocelotgui-qt4</PRE>
 </P>
 
@@ -116,25 +117,28 @@ work, then installation is successful.
 Stop again with File|Exit or control-Q.
 </P>
 
+<P>Warning: Some menu shortcut keys may not work properly with Ubuntu 14.04.</P>
+
 <H2 ID="some-screenshots">Some screenshots</H2><HR>
 
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot1.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot1.jpg" alt="shot1.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot2.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot2.jpg" alt="shot2.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot3.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot3.png" alt="shot3.png" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot4.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot4.jpg" alt="shot4.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot5.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot5.jpg" alt="shot5.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot6.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot6.jpg" alt="shot6.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot7.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot7.jpg" alt="shot7.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot8.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot8.jpg" alt="shot8.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot9.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot9.jpg" alt="shot9.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot10.jpg"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot10.jpg" alt="shot10.jpg" height="150"></A>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/shot11.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/shot11.png" alt="shot11.png" height="150"></A>
+<A href="shot1.jpg"><img src="shot1.jpg" alt="shot1.jpg" align="left" height="150"></A>
+<A href="shot2.jpg"><img src="shot2.jpg" alt="shot2.jpg" height="150"></A>
+<A href="shot3.png"><img src="shot3.png" alt="shot3.png" height="150"></A>
+<A href="shot4.jpg"><img src="shot4.jpg" alt="shot4.jpg" height="150"></A>
+<A href="shot5.jpg"><img src="shot5.jpg" alt="shot5.jpg" height="150"></A>
+<A href="shot6.jpg"><img src="shot6.jpg" alt="shot6.jpg" height="150"></A>
+<A href="shot7.jpg"><img src="shot7.jpg" alt="shot7.jpg" height="150"></A>
+<A href="shot8.jpg"><img src="shot8.jpg" alt="shot8.jpg" height="150"></A>
+<A href="shot9.jpg"><img src="shot9.jpg" alt="shot9.jpg" height="150"></A>
+<A href="shot10.jpg"><img src="shot10.jpg" alt="shot10.jpg" height="150"></A>
+<A href="shot11.png"><img src="shot11.png" alt="shot11.png" height="150"></A>
+<A href="explorer1.png"><img src="explorer1.png" alt="explorer1.png" height="150"></A>
 
 <H2 ID="user-manual">User Manual</H2><HR><HR>
 
-<P>Version 1.5.0, July 19 2021</P>
+<P>Version 1.8.0, November 16 2022</P>
 
-<P>Copyright (c) 2021 by Peter Gulutzan. All rights reserved.</P>
+<P>Copyright (c) 2022 by Peter Gulutzan. All rights reserved.</P>
   
 <P>This program is free software; you can redistribute it and/or modify  
 it under the terms of the GNU General Public License as published by  
@@ -165,7 +169,7 @@ who has specialized in database products for thirty years,
 as an employee of Ocelot Computer Services Inc. and
 MySQL AB and Sun Microsystems and Oracle and HP, or as a
 contractor for a large company in eastern Europe.</P>
-  
+
 <P>The ocelotgui program is a front end which connects to Tarantool (tm).
 In some ways it is like the mysql client program that connects to MySQL or MariaDB servers,
 with added GUI features: full-screen editing, syntax
@@ -206,7 +210,7 @@ ocelotgui [--option [--option...]]
 For a description of options see  <A href="#Appendix-1">Appendix 1 Details about ocelotgui options</A>.
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/starting-dialog.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/starting-dialog.png" alt="starting-dialog.png" align="right" height="128"></A>
+<A href="starting-dialog.png"><img src="starting-dialog.png" alt="starting-dialog.png" align="right" height="128"></A>
 If a password is required but not supplied, a dialog box will appear.
 Or, if the initial attempt to connect fails, an error message will appear
 saying it is necessary to choose File|Connect, which will cause the dialog
@@ -219,13 +223,14 @@ but only non-DBMS tasks such as screen customizing will be possible.
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/starting.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/starting.png" alt="starting.png" align="right" height="256"></A>
+<A href="starting.png"><img src="starting.png" alt="starting.png" align="right" height="256"></A>
 In any case, an initial screen will appear. After some activity has
 taken place, the screen will have four parts, from top to bottom:<BR>
 menu <BR>
 history widget, where retired statements and diagnostics end up <BR>
 results widget, where SELECT result sets appear <BR>
 statement widget, where users can type in instructions.<BR>
+(And optionally, on the side, an explorer widget.)
 Initially, though, only the menu and statement widget will appear.
 </P>
 <P>
@@ -254,7 +259,7 @@ but this can be changed, see the later description of
 Client Statements: Prompt.  
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/statement-widget-example.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/statement-widget-example-tarantool.png" alt="statement-widget-example-tarantool.png" align="right" height="82"></A>
+<A href="statement-widget-example.png"><img src="statement-widget-example-tarantool.png" alt="statement-widget-example-tarantool.png" align="right" height="82"></A>
 For example, this screenshot shows the statement widget
 after the user has changed the default prompt and
 entered an SQL statement.
@@ -352,7 +357,7 @@ been cleared, the result widget has the rows.
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/result-widget-example-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/result-widget-example-tarantool.png" alt="result-widget-example-tarantool.png" height="460"></A>
+<A href="result-widget-example-tarantool.png"><img src="result-widget-example-tarantool.png" alt="result-widget-example-tarantool.png" height="460"></A>
 <BR clear="all">
 </P>
 <P>
@@ -368,13 +373,14 @@ the result set would not be tabular when selecting from a Lua space.
 Options, Debug and Help.</P>
 
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-file.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-file.png" alt="menu-file.png" align="right" height="48"></A>
+<A href="menu-file.png"><img src="menu-file.png" alt="menu-file.png" align="right" height="48"></A>
 File|Connect, or Ctrl+O, starts the Connect dialog box.  
 File|Exit, or Ctrl+Q, stops the program.
+File|Export brings up a dialog box for exporting selections.
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-edit-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-edit-tarantool.png" alt="menu-edit-tarantool.png" align="right" height="192"></A>
+<A href="menu-edit-tarantool.png"><img src="menu-edit-tarantool.png" alt="menu-edit-tarantool.png" align="right" height="192"></A>
 Edit|Undo or Ctrl+Z, Edit|Redo or Ctrl+Shift+Z, Edit|Cut or Ctrl+X,
 Edit|Cut or Ctrl+X, Edit|Copy or Ctrl+C, Edit|Paste or Ctrl+V,
 and Edit|Select or Ctrl+A, all work in the conventional manner.
@@ -388,7 +394,7 @@ be discussed later.
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-run.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-run.png" alt="menu-run.png" align="right" height="48"></A>
+<A href="menu-run.png"><img src="menu-run.png" alt="menu-run.png" align="right" height="48"></A>
 Run|Execute or Ctrl+E or Ctrl+Enter causes execution of whatever is in the
 statement widget.  
 Run|Kill or Ctrl+C tries to stop execution -- this
@@ -396,7 +402,7 @@ menu item is disabled for Tarantool.
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-settings.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-settings.png" alt="menu-settings.png" align="right" height="120"></A>
+<A href="menu-settings.png"><img src="menu-settings.png" alt="menu-settings.png" align="right" height="120"></A>
 Settings|Menu, Settings|History Widget, Settings|Grid Widget,
 Settings|Statement, and Settings|Extra Rule 1 are
 items which affect the behavior of each
@@ -414,7 +420,7 @@ set Grid Background Color Pink, set Condition = data_type LIKE
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-options.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-options.png" alt="menu-options.png" align="right" height="72"></A>
+<A href="menu-options.png"><img src="menu-options.png" alt="menu-options.png" align="right" height="72"></A>
 Options|detach history widget,
 Options|detach result grid widget,
 Options|detach debug widget are
@@ -427,13 +433,13 @@ and clicking it will put the widget back in its original position.
 <BR clear="all">
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-debug.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-debug.png" alt="menu-debug.png" align="right" height="132"></A>
+<A href="menu-debug.png"><img src="menu-debug.png" alt="menu-debug.png" align="right" height="132"></A>
 The items on the Debug menu are disabled for Tarantool.
 <BR clear="all">
 </P>
   
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-help.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/menu-help.png" alt="menu-help.png" align="right" height="96"></A>
+<A href="menu-help.png"><img src="menu-help.png" alt="menu-help.png" align="right" height="96"></A>
 Help|About will show the license and copyright and version.
 Help|The Manual will show the contents of README.md (not the manual that you are reading) if README.md is on the same path as
 the ocelotgui program; otherwise it will show a copyright, a GPL license, and a pointer to README.md.
@@ -446,15 +452,15 @@ Help|settings will advise about how to use the Settings menu items.
 <H3 id="special-effects">Special Effects</H3><HR>
 
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/special-vertical-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/special-vertical-tarantool.png" alt="special-vertical-tarantool.png" align="right" height="256"></A>
-Vertical: If a user starts ocelotgui with the additional option --vertical=1,
-results come up with one column per row.
-(There are other options for displaying as html, raw, etc.).
+<A href="special-vertical-tarantool.png"><img src="special-vertical-tarantool.png" alt="special-vertical-tarantool.png" align="right" height="256"></A>
+> Vertical: If a user starts ocelotgui with the additional option --vertical=1,
+> results come up with one column per row.
+> (There are other options for displaying as html, raw, etc.).
 <BR clear="all"> 
 </P>
   
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/special-images.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/special-images.png" alt="special-images.png" align="right" height="256"></A>
+<A href="special-images.png"><img src="special-images.png" alt="special-images.png" align="right" height="256"></A>
 Images: If a user chooses Settings | Extra Rule 1 from the menu,
 and sets the Condition and Display As boxes as described earlier,
 and selects rows which contain VARBINARY columns, and the column values are
@@ -472,14 +478,14 @@ statement widget will show UPDATE t SET column2 = 'AB' WHERE column1 = 5 AND col
 The user then has the choice of ignoring the update statement or executing it.  
 </P>
 <P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/special-detach.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/special-detach.png" alt="special-detach.png" align="right" height="256"></A>
+<A href="special-detach.png"><img src="special-detach.png" alt="special-detach.png" align="right" height="256"></A>
 Detaching: If a user chooses Options | detach history widget or
 Options | detach result grid widget, then the widget will become a separate window
 which can be moved or resized.  
 <BR clear="all">
 </P>
-<P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/special-settings.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/special-settings.png" alt="special-settings.png" align="right" height="512"></A>
+<P id="special-settings">
+<A href="special-settings.png"><img src="special-settings.png" alt="special-settings.png" align="right" height="512"></A>
 Colors: The Colors and fonts dialog boxes have a simple way to choose
 colors, by selecting from a choice of 148 color names / color icons. Users can also
 change colors by saying SET object_name_color = color-name | hex-rgb-value.  
@@ -498,9 +504,9 @@ Users can use arrow keys to select other words,
 and can use "set ocelot_shortcut_autocomplete='...'; to choose a different key instead of the Tab key,
 and can use "set ocelot_completer_timeout=...'; to choose how many seconds the list will be visible,
 and can use "rehash;" to update the list.<br>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/completer_1-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/completer_1-tarantool.png" alt="completer_1-tarantool.png" height="128" width="256"></A><br>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/completer_2-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/completer_2-tarantool.png" alt="completer_2-tarantool.png" height="128" width="256"></A><br>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/completer_3-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/completer_3-tarantool.png" alt="completer_3-tarantool.png" height="128" width="256"></A>
+<A href="completer_1-tarantool.png"><img src="completer_1-tarantool.png" alt="completer_1-tarantool.png" height="128" width="256"></A><br>
+<A href="completer_2-tarantool.png"><img src="completer_2-tarantool.png" alt="completer_2-tarantool.png" height="128" width="256"></A><br>
+<A href="completer_3-tarantool.png"><img src="completer_3-tarantool.png" alt="completer_3-tarantool.png" height="128" width="256"></A>
 </P>
 
 <P>RE: HINTING FOR COLUMN NAMES. Although hints for syntax appear by
@@ -526,7 +532,7 @@ is started again. Alternatively, settings can be placed in
 an options file such as my.cnf.</P>
 
 <P>
-<A href="A href="https://github.com/ocelot-inc/ocelotgui/blob/master/conditional.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/conditional.png" alt="conditional.png" align="right" height="220" width="404"></A>
+<A href="special-settings.png"><img src="conditional.png" alt="special-settings.png" align="right" height="220" width="404"></A>
 RE: CONDITIONAL SETTINGS. To override the ordinary <A HREF="#special-settings">settings</A>
 for result set displays there is a special SET statement with a WHERE clause:<br>
 SET ocelot_grid_setting = string|integer [, ocelot_grid_value = string-or-integer...]<br>
@@ -539,7 +545,6 @@ For example to say "I want the background color to be pink if
 it's in the fourth column of the result set and it's NULL", say<br>
 SET ocelot_grid_background_color='pink' WHERE column_number = 4 AND value IS NULL;".</P>
 
-
 <P>RE: CONNECTION DIALOG. As stated earlier, if a password is necessary
 to connect, it is sufficient to start ocelotgui with "--password=<i>password</i>"
 or by choosing File|Connect and typing a password in the Password
@@ -548,11 +553,10 @@ Connection Dialog Box, if the server is running on the same computer
 as the ocelotgui client, it is sometimes a good idea to enter
 '127.0.0.1' in the host field, instead of 'localhost'.</P>
 
-<P>
-<A href="https://github.com/ocelot-inc/ocelotgui/blob/master/hover-tarantool.png"><img src="https://github.com/ocelot-inc/ocelotgui/blob/master/hover-tarantool.png" alt="hover-tarantool.png" align="right" height="128" width="256"></A>
-RE: HOVERING. Use the mouse to hover over a word in the
+<P>RE: HOVERING. Use the mouse to hover over a word in the
 statement widget, and ocelotgui will display what kind of word
 it is, for example "table identifier".
+<A href="hover-tarantool.png"><img src="hover-tarantool.png" alt="hover-tarantool.png" align="right" height="128" width="256"></A>
 </P>
 
 <P>RE: FORMAT. Click Edit|Format, and ocelotgui will change the contents of
@@ -569,10 +573,200 @@ change how large the history file can become with OCELOT_HISTFILESIZE=number,
 change how large the initial history can become with OCELOT_HISTSIZE=number.
 </P>
 
+<P>RE: EXPORT. A result set can be dumped to a file as text, as table, or as html.
+</P>
+
 <P>RE: TARANTOOL EXTRAS. There are a few other Tarantool-specific features
 that have to be regarded as "in development" rather than "everyday use".
 For example you can enter Lua statements as well as SQL statements.
 Read <A HREF="#Appendix-3">Appendix 3 Tarantool Extras</A>.<P>
+
+<H3 id="explorer-widget">Explorer widget</A></H3><HR>
+
+<P>EXPLORER NAME. Explorer.
+A similar feature in other GUI clients may be named "object explorer" or "navigator".
+Compare the name "Windows explorer".
+Note: this section has some MySQL/MariaDB output examples but the feature works with Tarantool too.</P>
+
+<P>EXPLORER SETTINGS.
+To change some significant settings, click on the menu bar: Settings|Explorer.<br>
+<img src="explorer2.png" alt="explorer2.png" align="right" height="256">
+Visible: yes|no. Default no. So if you don't change this to 'yes', it is not visible.
+There must be a connection to the DBMS server before it can be made visible.<br>
+Sort alphabetically: yes|no. Default no. If 'yes', objects of the same type are sorted alphabetically.<br>
+Query: a long select with unions.
+The default query selects all databases.
+Users can change this query to add WHERE clauses (affects MySQL/MariaDB only).<br>
+Detached|Top|Left|Width|Height:
+As with other widgets, the explorer is detachable and the explorer's size + position are settable
+when it is detached.
+Unlike with other widgets, changing width may have an effect even if the explorer is not detached.
+The default width depends on the widths of the object names.
+</P>
+
+<P>
+Ordinarily the explorer widget appears on the left while the other main widgets
+(history, grid, statement) appear vertically on the right.
+</P>
+
+<P>EXPLORER STYLE. It is a result grid with text columns.
+Therefore users get some features without needing to learn anything new:<br>
+* ^Find works. (if the item is visible)<br>
+* Vertical scroll bar works.<br>
+* Settings | Explorer can be used to change colors and font.<br>
+* Example: SET ocelot_explorer_text_color='blue' WHERE value = '▶'; REFRESH;<br>
+</P>
+
+<P>EXPLORER COLUMNS. There are three text columns.<br>
+#1: Min. = Unicode Black Down-Pointing Triangle ▼ or Black Right-Pointing Triangle ▶ if database or table.
+If it's a database or table, click on the triangle to hide the parts e.g. columns, or to show them again.
+(This is "toggling".)
+It's treated as a header item, that is, Result Grid Settings for header affect it.
+So ordinarily it has a different background color.<br>
+#2: object_type. = S or T or V or C or P or I or E or t<br>
+#3: object_name. for example, if object_type='T', this is a table name.<br>
+If object_type='C', this is a column name and is taken from part_name.
+</P>
+
+<P>EXPLORER ROWS.
+Rows are in a hierarchy: S, T or V, C or I, etc.
+Within the hierarchy, rows are in order by creation time.
+</P>
+
+<P>EXPLORER POSSIBLE USER ACTIONS<br>
+Hover. This will show what type of object is under the cursor and contain some short advice.<br>
+DoubleClick: This will copy the cell contents to the end of the statement widget<br>
+Right Click: puts up a context menu.<br>
+Click on the leftmost (Min) column. This will "toggle".
+</P>
+
+<P>EXPLORER CONTEXT MENU.
+This is the menu that will appear when the user uses the right mouse button to click
+over a row in the explorer display.
+It is called a context menu because the menu is different for each object type.
+For example if it's over a table, then table-related menu items will appear.<br>
+Items for all types: Copy to clipboard, Send to SQL editor, Reset, Refresh.<br>
+Items for 'S' (Schema): Set as default schema, Filter to this schema, Schema inspector,
+Create schema, Alter schema, Drop schema.<br>
+Items for 'T' (Table): Select rows, Export dialog - Text, Export dialog - Table,
+Export dialog - Html, Import - Text, Create table, Create table like, Drop table, Truncate table.<br>
+For 'C' (Column): Show column, Drop column.<br>
+For 'I' (Index): Show index, Select index, drop index.<br>
+For 'P' (Procedure): Create procedure, Drop procedure.<br>
+Details for 'T':
+<pre>
+  Copy to Clipboard      Equivalent of "Copy"
+  Send to SQL editor     Copy, then put in statement widget, then execute
+  Select rows            Execute a statement to select 100 rows
+  Export Dialog - Text   Dialog box for export, then do the export if OK
+  Export Dialog - Table  Dialog box for export, then do the export if OK
+  Export Dialog - Html   Dialog box for export, then do the export if OK
+  Import - Text          Generate INSERTs for a file's contents, no options
+  Create table           Generate SHOW CREATE TABLE ...
+  Create table like      Generate CREATE TABLE ... LIKE ...
+  Drop table             Generate DROP TABLE
+  Truncate table         Generate TRUNCATE TABLE
+  Reset                  Back to default state with nothing expanded
+  Refresh                Big SELECT to recreate the widget (this can be slow)
+</pre>
+</P>
+
+<P>EXPLORER EXAMPLE.<br>
+<P>
+The user makes the explorer visible with Settings|Explorer Widget, it looks like this:<br>
+<img src="explorer3.png" alt="explorer3.png" width="300" height="256"><br>
+The user clicks the ▶ beside information_schema, it changes to ▼
+and the schema items appear:<br>
+<img src="explorer4.png" alt="explorer4.png" width="300" height="256"><br>
+The user right-clicks on COLLATIONS, and the context menu appears:<br>
+<img src="explorer5.png" alt="explorer5.png" width="300" height="256"><br>
+The user navigates (with the mouse or the down-arrow key) and selects
+(with Enter or Tab or click) the Export dialog - Text choice, and
+the export dialog appears:<br>
+<img src="explorer6.png" alt="explorer6.png" width="300"  height="256"><br>
+The user selects the OK button and the contents are dumped to STDOUT:<br>
+<img src="explorer7.png" alt="explorer7.png" width="400"  height="256"><br>
+</P>
+
+<P>EXPLORER SET STATEMENTS.
+The user can enter SET statements on the select widget.
+Or, some SET statements will be generated when the user clicks OK on the Settings menu.<br>
+Keywords are
+OCELOT_EXPLORER_ACTION,
+OCELOT_EXPLORER_APPLICABLE_DBMSS,
+OCELOT_EXPLORER_APPLICABLE_TYPES,
+OCELOT_EXPLORER_BACKGROUND_COLOR,
+OCELOT_EXPLORER_DETACHED,
+OCELOT_EXPLORER_ENABLED,
+OCELOT_EXPLORER_FONT_FAMILY,
+OCELOT_EXPLORER_FONT_SIZE,
+OCELOT_EXPLORER_FONT_STYLE,
+OCELOT_EXPLORER_FONT_WEIGHT,
+OCELOT_EXPLORER_HEIGHT,
+OCELOT_EXPLORER_LEFT,
+OCELOT_EXPLORER_SHORTCUT,
+OCELOT_EXPLORER_TEXT,
+OCELOT_EXPLORER_TEXT_COLOR,
+OCELOT_EXPLORER_TOP,
+OCELOT_EXPLORER_VISIBLE,
+OCELOT_EXPLORER_WIDTH.<br>
+The important one is SET ocelot_explorer_visible='yes';<br>
+Settings can also be done in the .cnf file or the command line,
+for example start ocelotgui with --ocelot_explorer_visible='yes'.<br>
+Such statements affect both the explorer widget and its context menu.
+Note: some settings changes do not take effect immediately, they are delayed until "Refresh" happens.<br>
+</P>
+
+<P>EXPLORER CONDITIONAL SET STATEMENTS.
+There is an optional clause ... WHERE VALUE operator 'literal' [{AND|OR} value operator 'literal' ...].
+Statements with WHERE clauses affect only rows which match the expression.
+Example:<br>
+SET ocelot_explorer_background_color='blue' WHERE value > 'p' OR value regexp '1';<br>
+<img src="explorer8.png" alt="explorer8.png" height="400"><br>
+</P>
+
+<P>EXPLORER REFRESH STATEMENT.
+REFRESH is a bit similar to REHASH, but it gets all schemas (databases)
+-- so has an effect on the server.
+REFRESH is necessary because we don't know when other users might change data definitions.
+And it's slow.
+Whenever users say REFRESH, the explorer tables are redone.
+</P>
+
+<P>EXPLORER IN OPTIONS MENU. Choosing Options|Detach explorer widget,
+and rearranging widgets, could result in something like this:<br>
+<img src="explorer9.png" alt="explorer9.png" height="400"><br>
+</P>
+
+<P>EXPLORER ADVANCED-LEVEL CUSTOMIZING.
+As explained earlier, customizing the appearance of the explorer widget
+and the context menu, or specific rows on them, is simple
+and somewhat like the customizing of the other widgets.
+However, one can do more with the context menu -- change the text and
+action and shortcut.<br>
+Here, for example, is a statement that says
+there will be a shortcut associated with the Refresh option:<br>
+SET ocelot_explorer_shortcut='Alt+G' WHERE value = 'Refresh';<br>
+Here, for example, is a statement that says
+"Instead of 'Create table', the 'T' menu choice will be
+'Select Count(*)' and the effect, if you click it,
+or type the shortcut key, will be that the
+statement "SELECT COUNT(*) FROM (table-name-in-context);" will appear on the statement widget,
+where it is executed, so the result count appears in the grid widget.<br>
+SET ocelot_explorer_action='SELECT COUNT(*) FROM ${object_name};',
+ ocelot_explorer_text='Customized Selection'
+WHERE value = 'Create table';<br>
+In other words, users can write their own explorer widgets.<br>
+Many of the possible actions can have "macros"
+-- strings enclosed inside ${...} that will be replaced when the statement is executed.
+Some macros are:
+... ${dialog-table} ${dialog_file} ${occurs_text} ${schema_name} ${object_name}
+'${object_name}' ${part_name} ${unqualified_part_name} '${part_name}'
+${part_type} ${cell} ${clipboard} ${action}.
+Since ocelotgui source code is supplied, users can
+download it and see the exact effects by reading the C++ statements in program ocelotgui.cpp,
+function Context_menu::replacer().<br>
+</P>
 
 <H3 id="contact">Contact</H3><HR>
 
@@ -1152,13 +1346,19 @@ take, see the ocelot.ca blog post
 <a href="http://ocelot.ca/blog/blog/2020/01/12/convert-sql-stored-procedures-to-lua-functions/">Convert SQL Stored Procedures to Lua Functions</a>.
 </P>
 
-<H3 id="Appendix-3">Appendix 3 Tarantool Extras</H3><HR>
+<H3 id="Appendix-3">Appendix 3 Tarantool</H3><HR>
 
 <P>The assumption is that users have a reasonably current
 version of Tarantool as downloaded according to the instructions in
 <A HREF="https://www.tarantool.io/en/download"> in the Tarantool manual</A>;
 however, slightly earlier versions and slightly later versions will work.
 The ocelotgui program will change its parsing to match the version.</P>
+
+<P>The history widget can contain a copy of the result set,
+if one clicks Settings | History Widget and sets a non-zero
+in the Max Row Count box. The format looks like what comes
+out of the mysql non-GUI table display to make copying easier.
+This format might change to match the Tarantool console fselect display.</P>
 
 <P>Usually you do not need to install the Tarantool client (libtarantool.so) library,
 but it is possible to use it if you build ocelotgui with "cmake ... -DOCELOT_THIRD_PARTY=0".
@@ -1193,7 +1393,7 @@ On Windows you do not need to install a
 Tarantool library, its code is embedded in ocelotgui.exe.</P>
 
 <P>You need the latest ocelotgui client.
-The Release 1.5.0 version is okay at the time of release,
+The Release 1.8.0 version is okay at the time of release,
 but some things might not be up to date.
 It may be better to build it from source.
 Download from github.com/ocelot-inc/ocelotgui.</P>
@@ -1232,11 +1432,10 @@ work.)</P>
 <P>Now type<br>
 LUA 'return box.space._vindex:select()';<br>
 or simply<br>
-return box.space._vindex:select();<br>
+return box.space._index:select();<br>
 This will evaluate the expression, without SQL.
 The expression must return a result set.
-The result will be tabular (rows and columns),
-even though box.space._vindex was created with NoSQL.</P>
+The result will be tabular (rows and columns),even though box.space._vindex was created with NoSQL.</P>
 
 <P>Bonus feature: A client statement,<br>
 CREATE SERVER id ... OPTIONS (PORT ..., HOST ..., USER ..., PASSWORD ...);<br>
@@ -1311,18 +1510,8 @@ SET ocelot_extra_rule_1_condition = 'data_type LIKE ''%BLOB''';
 SELECT * FROM "timages";
 
 Alternative: (details are left to the reader's imagination) We could instead use:
-function f() return 5 end;
-box.internal.sql_create_function("f",f,0);
-CREATE TABLE test (s1 INT PRIMARY KEY);
-INSERT INTO test VALUES (f());
-SELECT s1, s1 * f() FROM test;
+<a href="https://www.tarantool.io/en/doc/latest/reference/reference_sql/sql_plus_lua/#calling-lua-routines-from-sql">a Lua function</a>.
 </pre>
-
-<P>Stored Procedures:<br>
-See the blog post
-<a href="http://ocelot.ca/blog/blog/2020/01/12/convert-sql-stored-procedures-to-lua-functions">
-Convert SQL Stored Procedures to Lua Functions</a>.
-</P>
 
 <P>
 Rules concerning ocelotgui when connecting to tarantool:<br>
@@ -1364,11 +1553,11 @@ How to get it:<br>
 * Download the ocelotgui zip file from github.
   Check https://github.com/ocelot-inc/ocelotgui/blob/master/README.md
   to see where the latest release is. For example it might be
-  https://github.com/ocelot-inc/ocelotgui/releases/download/1.5.0/ocelotgui-1.5.0-1.ocelotgui.zip<br>
+  https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0-1.ocelotgui.zip<br>
 * Unzip. It was zipped with 7-zip from http://www.7-zip.org,
   but other utilities should work. For example, on Windows command prompt,
   if you have the PowerShell utility on your path:
-  PowerShell Expand-Archive ocelotgui-1.5.0-1.ocelotgui.zip c:\ocelotgui<br>
+  PowerShell Expand-Archive ocelotgui-1.8.0-1.ocelotgui.zip c:\ocelotgui<br>
 * Read the COPYING and LICENSE arrangements.
   On Windows ocelotgui is statically linked to Qt and MariaDB libraries,
   so the copyright and licensing is not the same as for Linux.<br>
