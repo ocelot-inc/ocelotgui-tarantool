@@ -1,7 +1,7 @@
 
 ocelotgui A GUI for Tarantool
 
-<P>Version 1.8.0</P>
+<P>Version 1.9.0</P>
 
 <P>The ocelotgui GUI, a database client, allows users to connect to
 a Tarantool (tm) server, enter SQL statements, and receive results.
@@ -9,7 +9,7 @@ Some of its features are: syntax highlighting, user-settable colors
 and fonts for each part of the screen, result-set displays
 with multi-line rows and resizable columns.</P>
 
-<P>Copyright (c) 2022 by Peter Gulutzan
+<P>Copyright (c) 2023 by Peter Gulutzan
 All rights reserved.</P>
 
 <P>For the GPL license terms see <A href="https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL">https://github.com/ocelot-inc/ocelotgui/blob/master/LICENSE.GPL</A>.</P>
@@ -39,6 +39,7 @@ All rights reserved.</P>
 ... <A href="#menu">Menu</A>
 ... <A href="#special-effects">Special effects</A>
 ... <A href="#explorer-widget">Explorer widget</A>
+... <A href="#ERDiagram">ERDiagram</A>
 ... <A href="#contact">Contact</A>
 <H4>Appendixes</H4>
 ... <A href="#Appendix-1">Appendix 1 Details about ocelotgui options</A>
@@ -85,21 +86,21 @@ If one of the following ocelotgui binary packages is compatible with your platfo
 cut and paste the corresponding pair of instructions onto your computer and
 you can be up and running in about 15 seconds.<BR><BR>
 For 32-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui_1.8.0-1_i386.deb
-sudo apt install ./ocelotgui_1.8.0-1_i386.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui_1.9.0-1_i386.deb
+sudo apt install ./ocelotgui_1.9.0-1_i386.deb</PRE>
 For 64-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui_1.8.0-1_amd64.deb
-sudo apt install ./ocelotgui_1.8.0-1_amd64.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui_1.9.0-1_amd64.deb
+sudo apt install ./ocelotgui_1.9.0-1_amd64.deb</PRE>
 For 64-bit, RPM-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0-1.x86_64.rpm
-sudo rpm -i ocelotgui-1.8.0-1.x86_64.rpm</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0-1.x86_64.rpm
+sudo rpm -i ocelotgui-1.9.0-1.x86_64.rpm</PRE>
 For 64-bit, any Linux, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0.tar.gz
-tar zxvf ocelotgui-1.8.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0.tar.gz
+tar zxvf ocelotgui-1.9.0.tar.gz
 ocelotgui/ocelotgui-qt5</PRE>
 For 64-bit, any Linux, Qt4 (deprecated)<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0.tar.gz
-tar zxvf ocelotgui-1.8.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0.tar.gz
+tar zxvf ocelotgui-1.9.0.tar.gz
 ocelotgui/ocelotgui-qt4</PRE>
 </P>
 
@@ -136,9 +137,9 @@ Stop again with File|Exit or control-Q.
 
 <H2 ID="user-manual">User Manual</H2><HR><HR>
 
-<P>Version 1.8.0, November 16 2022</P>
+<P>Version 1.9.0, March 7 2023</P>
 
-<P>Copyright (c) 2022 by Peter Gulutzan. All rights reserved.</P>
+<P>Copyright (c) 2023 by Peter Gulutzan. All rights reserved.</P>
   
 <P>This program is free software; you can redistribute it and/or modify  
 it under the terms of the GNU General Public License as published by  
@@ -768,6 +769,34 @@ download it and see the exact effects by reading the C++ statements in program o
 function Context_menu::replacer().<br>
 </P>
 
+<H3 id="ERDiagram">ERDiagram</H3><HR>
+
+<P>
+<A href="shot2.jpg"><img src="shot2.jpg" alt="shot2.jpg" align="right" height="256"></A>
+An entity relationship diagram ("ERDiagram") is a graphic display of tables (in rectangles) and foreign-key relationships
+(as lines). The prerequisite is the existence of an explorer widget, that is,<br>
+SET ocelot_explorer_visible='yes';<br>
+is necessary before requesting an ERDiagram.
+An ERDiagram may either be requested from the explorer or from the statement widget.
+When it's requested from the statement widget, the syntax is:<br>
+SET OCELOT_QUERY = SHOW ERDIAGRAM OF schema_name [COLUMNS PRIMARY] [LINES IN BACKGROUND] [TABLES (table-list];<br>
+For example, to get the picture shown here, if you have the well-known "sakila" database, say<br>
+SET OCELOT_QUERY = SHOW ERDIAGRAM OF sakila COLUMNS PRIMARY;<br>
+</P>
+<P>
+The optional clause COLUMNS PRIMARY means "show only the columns which are part of a primary key instead of all columns",
+the optional clause LINES IN BACKGROUND means "draw lines underneath tables instead of over them",
+the optional clause TABLES (table-list) means "show only the tables in this list instead of all tables".
+The table list should be a comma-delimited list of table names and each name can be followed by x and y coordinates,
+for example "TABLES (customer 0 1, address 1 1" means "display customer in column 0 row 1 and display address in
+column 1 row 1".
+</P>
+<P>
+Customize the display fonts and colors with SET OCELOT_GRID_... statements, for example
+SET OCELOT_GRID_FONT_WEIGHT='bold' WHERE value REGEXP '_id'; will cause column names which end with _id
+(the primary keys) to be displayed with a bold font. Move a mouse over a line to see the foreign key name.
+</P>
+
 <H3 id="contact">Contact</H3><HR>
 
 <P>We need feedback!</P>
@@ -1393,7 +1422,7 @@ On Windows you do not need to install a
 Tarantool library, its code is embedded in ocelotgui.exe.</P>
 
 <P>You need the latest ocelotgui client.
-The Release 1.8.0 version is okay at the time of release,
+The Release 1.9.0 version is okay at the time of release,
 but some things might not be up to date.
 It may be better to build it from source.
 Download from github.com/ocelot-inc/ocelotgui.</P>
@@ -1553,11 +1582,11 @@ How to get it:<br>
 * Download the ocelotgui zip file from github.
   Check https://github.com/ocelot-inc/ocelotgui/blob/master/README.md
   to see where the latest release is. For example it might be
-  https://github.com/ocelot-inc/ocelotgui/releases/download/1.8.0/ocelotgui-1.8.0-1.ocelotgui.zip<br>
+  https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0-1.ocelotgui.zip<br>
 * Unzip. It was zipped with 7-zip from http://www.7-zip.org,
   but other utilities should work. For example, on Windows command prompt,
   if you have the PowerShell utility on your path:
-  PowerShell Expand-Archive ocelotgui-1.8.0-1.ocelotgui.zip c:\ocelotgui<br>
+  PowerShell Expand-Archive ocelotgui-1.9.0-1.ocelotgui.zip c:\ocelotgui<br>
 * Read the COPYING and LICENSE arrangements.
   On Windows ocelotgui is statically linked to Qt and MariaDB libraries,
   so the copyright and licensing is not the same as for Linux.<br>
