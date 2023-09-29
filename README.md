@@ -1,7 +1,7 @@
 
 ocelotgui A GUI for Tarantool
 
-<P>Version 1.9.0</P>
+<P>Version 2.1.0</P>
 
 <P>The ocelotgui GUI, a database client, allows users to connect to
 a Tarantool (tm) server, enter SQL statements, and receive results.
@@ -40,6 +40,7 @@ All rights reserved.</P>
 ... <A href="#special-effects">Special effects</A>
 ... <A href="#explorer-widget">Explorer widget</A>
 ... <A href="#ERDiagram">ERDiagram</A>
+... <A href="#charts">Charts</A>
 ... <A href="#contact">Contact</A>
 <H4>Appendixes</H4>
 ... <A href="#Appendix-1">Appendix 1 Details about ocelotgui options</A>
@@ -86,21 +87,21 @@ If one of the following ocelotgui binary packages is compatible with your platfo
 cut and paste the corresponding pair of instructions onto your computer and
 you can be up and running in about 15 seconds.<BR><BR>
 For 32-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui_1.9.0-1_i386.deb
-sudo apt install ./ocelotgui_1.9.0-1_i386.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/2.1.0/ocelotgui_2.1.0-1_i386.deb
+sudo apt install ./ocelotgui_2.1.0-1_i386.deb</PRE>
 For 64-bit, Debian-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui_1.9.0-1_amd64.deb
-sudo apt install ./ocelotgui_1.9.0-1_amd64.deb</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/2.1.0/ocelotgui_2.1.0-1_amd64.deb
+sudo apt install ./ocelotgui_2.1.0-1_amd64.deb</PRE>
 For 64-bit, RPM-like, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0-1.x86_64.rpm
-sudo rpm -i ocelotgui-1.9.0-1.x86_64.rpm</PRE>
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/2.1.0/ocelotgui-2.1.0-1.x86_64.rpm
+sudo rpm -i ocelotgui-2.1.0-1.x86_64.rpm</PRE>
 For 64-bit, any Linux, Qt5<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0.tar.gz
-tar zxvf ocelotgui-1.9.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/2.1.0/ocelotgui-2.1.0.tar.gz
+tar zxvf ocelotgui-2.1.0.tar.gz
 ocelotgui/ocelotgui-qt5</PRE>
 For 64-bit, any Linux, Qt4 (deprecated)<PRE>
-wget https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0.tar.gz
-tar zxvf ocelotgui-1.9.0.tar.gz
+wget https://github.com/ocelot-inc/ocelotgui/releases/download/2.1.0/ocelotgui-2.1.0.tar.gz
+tar zxvf ocelotgui-2.1.0.tar.gz
 ocelotgui/ocelotgui-qt4</PRE>
 </P>
 
@@ -137,7 +138,7 @@ Stop again with File|Exit or control-Q.
 
 <H2 ID="user-manual">User Manual</H2><HR><HR>
 
-<P>Version 1.9.0, March 7 2023</P>
+<P>Version 2.1.0, September 29 2023</P>
 
 <P>Copyright (c) 2023 by Peter Gulutzan. All rights reserved.</P>
   
@@ -797,6 +798,119 @@ SET OCELOT_GRID_FONT_WEIGHT='bold' WHERE value REGEXP '_id'; will cause column n
 (the primary keys) to be displayed with a bold font. Move a mouse over a line to see the foreign key name.
 </P>
 
+<H3 id="charts">Charts</H3><HR>
+<P>
+<A href="shot7.jpg"><img src="shot7.jpg" alt="shot7.jpg" align="right" height="50" width="100"></A>
+While a result set is visible, if some columns are numeric, press Alt+Shift+B to
+display as a bar chart, Alt+Shift+P to display as a pie chart, Alt+Shift+L to display as a line chart. 
+No plugins or separate programs are necessary.
+But to customize the look of the charts, you will need client statements.
+</P>
+<P>
+The basic statement syntax is<br>
+SET ocelot_grid_chart = 'literal' [WHERE clause];<br>
+After you've typed SET ocelot_grid_chart = the prompt/autocomplete list wil be
+BAR | LINE | PIE | BAR VERTICAL | BAR STACKED | BAR VERTICAL STACKED | BAR SUBGROUP BY VALUE % 3
+| BAR SUBGROUP BY LEFT(COLUMN_NAME, 2) | LINE SUBGROUP BY LEFT(COLUMN_NAME, 2) | PIE SUBGROUP BY LEFT(COLUMN_NAME, 2) | [string]
+-- and you can make your own combination for example<br>
+SET ocelot_grid_chart = 'BAR STACKED SUBGROUP BY VALUE % 5';<br>
+The optional WHERE may include COLUMN_NAME | COLUMN_NUMBER | COLUMN_TYPE
+(relational operator) (literal value), along with AND|OR, as is usual for
+any SET OCELOT_GRID_... statements. For example<br>
+SET OCELOT_GRID_chart = 'PIE' WHERE column_name = 'k';<br>
+SET ocelot_grid_chart=''; will cancel all previous uses of SET ocelot_chart_grid,
+that is, it turns the feature off.
+</P>
+<P>
+Shortcut key combinations are:<br>
+Alt+Shift+B causes SET ocelot_grid_chart='bar';<br>
+Alt+Shift+L causes SET ocelot_grid_chart='line';<br>
+Alt_Shift+P causes SET ocelot_grid_chart='pie';<br>
+Alt+Shift+N causes SET ocelot_grid_chart='';<br>
+As usual, it is possible to change the key combinations with
+SET ocelot_shortcut... statements.
+</P>
+<P>
+GROUPS: Charts make sense when representing numbers.
+A "group" is any uninterrupted series of numbers in a result-set row.
+For example, in<br>
+SELECT 'a',1,2,3.7,4,'b',5e1,6,'c';<br>
+the first group is 1,2,3.7,4 and the second group is 5e1,6.
+(That is the default. to change the default, use a WHERE clause.)
+</P>
+<P>SUBGROUPS. A group may be divided into subgroups.
+Subgrouping is what decides how sampling is done within a group.
+Different methods of subgrouping are appropriate for different
+types of chart.<br>
+There is automatic subgrouping of pies because otherwise all
+pie segments would have a single colour.
+(Different subgroups have different colours.)<br>
+There is automatic subgrouping of lines because otherwise the
+points of all lines would be in the same axis and there would
+be no apparent movement. The automatic subgrouping in this case
+is SUBGROUP BY LEFT(COLUMN_NAME,2) so it need not be specified.
+</P>
+<P>
+LAYOUT OF A CELL. (After header, not including cell border.)<pre>
+  +--------------------------------------------------+
+  |    TOP                                           |
+  |L |                                              L|
+  |E |   CANVAS                                     E|
+  |F |                                              G|
+  |T |                                              E|
+  |  |                                              N|
+  |  |                                              D|
+  |   _____________________________________________  |
+  |   BOTTOM                                         |
+  +--------------------------------------------------+
+</pre>
+But if cell size is small ocelotgui might cancel everything except the canvas.<br>
+CANVAS: is a non-optional component, it has the actual bar/line/pie chart.<br>
+LEGEND: is on the RIGHT. Icons and very short text.<br>
+TOP: text (not shown by default).<br>
+LEFT: For vertical-bar or line has "values axis", for horizontal-bar has "samples axis". Text, rotated 90 degrees.<br>
+LEFT LINE: a straight line between LEFT and canvas.<br>
+BOTTOM: For horizontal-bar or line has "values axis", for vertical-bar has "samples axis". Text.<br>
+BOTTOM LINE: a straight line between canvas and BOTTOM.<br>
+Values axis: Becomes next to LEFT or BOTTOM in a bar or line.<br>
+Samples axis: Becomes next to LEFT or BOTTOM in a bar or line.<br>
+</P>
+<P>
+It is possible to cancel or change any item except the canvas.
+So a fuller statement of the SET syntax can be<pre>
+  SET ocelot_grid_chart = '
+  {BAR|LINE|PIE}          currently default=bar if this is missing, but don't do it
+  [VERTICAL]                        default is horizontal
+  [STACKED]                         default is grouping
+  [TOP=value]                       default is null
+  [RIGHT=value|LEGEND|NULL]         default is LEGEND
+  [LEFT=value|DEFAULT|NULL]         default is DEFAULT
+  [BOTTOM=value|DEFAULT|NULL]       default is DEFAULT
+  [AXIS=NULL|ALL]                   default is ALL, anything but NULL will make axes appear
+                         '
+  WHERE condition];</pre>
+For example, to suppress everything except the canvas with a vertical bar chart:<br>
+SET ocelot_grid_chart='BAR VERTICAL RIGHT=NULL LEFT=NULL BOTTOM=NULL AXIS=NULL';<br>
+For example, to add a top line along with the other components with a pie:<br>
+SET ocelot_grid_chart='PIE TOP=TOPPER';<br>
+</P>
+<P>
+EFFECTS OF OTHER SETTINGS:<br>
+SET ocelot_grid_font=... affects what font the text items have.<br>
+SET ocelot_grid_cell_border_size=... affects the width of lines.<br>
+And other ocelot_grid settings may affect all cells including cells with charts.<br>
+Any item value might be truncated. An easy way to change width of a single chart
+is to use long column names, that is, instead of saying SELECT 1, 2, 3; say<br>
+SELECT 1 AS really_long_column_name, 2, 3;<br>
+but for some charts it is possible to use "SET ocelot_grid_cell_width=..." instead.
+</P>
+<P>
+ILLUSTRATIONS. Pictures showing effects are in a blog post:
+<a href="http://ocelot.ca/blog/blog/2023/08/08/charts/">Charts</a>.
+The current output may look slightly different from the illustrations there,
+and the Qwt library is no longer necessary.
+</P>
+
 <H3 id="contact">Contact</H3><HR>
 
 <P>We need feedback!</P>
@@ -1422,7 +1536,7 @@ On Windows you do not need to install a
 Tarantool library, its code is embedded in ocelotgui.exe.</P>
 
 <P>You need the latest ocelotgui client.
-The Release 1.9.0 version is okay at the time of release,
+The Release 2.1.0 version is okay at the time of release,
 but some things might not be up to date.
 It may be better to build it from source.
 Download from github.com/ocelot-inc/ocelotgui.</P>
@@ -1582,11 +1696,11 @@ How to get it:<br>
 * Download the ocelotgui zip file from github.
   Check https://github.com/ocelot-inc/ocelotgui/blob/master/README.md
   to see where the latest release is. For example it might be
-  https://github.com/ocelot-inc/ocelotgui/releases/download/1.9.0/ocelotgui-1.9.0-1.ocelotgui.zip<br>
+  https://github.com/ocelot-inc/ocelotgui/releases/download/2.1.0/ocelotgui-2.1.0-1.ocelotgui.zip<br>
 * Unzip. It was zipped with 7-zip from http://www.7-zip.org,
   but other utilities should work. For example, on Windows command prompt,
   if you have the PowerShell utility on your path:
-  PowerShell Expand-Archive ocelotgui-1.9.0-1.ocelotgui.zip c:\ocelotgui<br>
+  PowerShell Expand-Archive ocelotgui-2.1.0-1.ocelotgui.zip c:\ocelotgui<br>
 * Read the COPYING and LICENSE arrangements.
   On Windows ocelotgui is statically linked to Qt and MariaDB libraries,
   so the copyright and licensing is not the same as for Linux.<br>
